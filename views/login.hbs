@@ -7,9 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/profile" method="post" enctype="multipart/form-data">
-  <input type="file" name="avatar" />
-  <button> Upload</button>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="avatar"  />
+  <input type="submit" value="upload">
+</form>
+<form action="/uploadMulti" method="post" enctype="multipart/form-data">
+  <input type="file" name="avatar" multiple="multiple" />
+  <input type="submit" value="upload">
 </form>
 </body>
 </html>
