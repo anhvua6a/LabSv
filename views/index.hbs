@@ -1,5 +1,5 @@
 
-<table  class="table table-striped">
+<table  class="table">
   <thead>
   <tr>
     <th>Name</th>
@@ -12,18 +12,15 @@
     </th>
   </tr>
   </thead>
-  </table>
    {{#each users}}
-   <table  class="table table-striped">
   <tbody>
      
   <tr>
-
     <td>{{this.name}}</td>
     <td>{{this.age}}</td>
     <td>{{this.address}}</td>
     <td>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#u{{this._id}}">
   Update
 </button>
 <a href="/delete/{{this._id}}" class="btn btn-danger" >
@@ -32,17 +29,17 @@
     </td>
   </tr>
   </tbody>
-</table>
 
-{{!-- update --}}
-<div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  {{!-- update --}}
+<div class="modal fade" id="u{{this._id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
-   <form method="POST" action="/update/{{this._id}}" class="modal-content">
+   <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Update Infomation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form method="POST" action="/update/{{this._id}}">
         <div class="mb-3">
         <label for="name" class="form-label" >Name</label>
         <input type="text" class="form-control" id="name" name="name" required value="{{this.name}}">
@@ -52,19 +49,26 @@
         
         <label for="address" class="form-label">Address</label>
         <input type="text" class="form-control" id="address" name="address" required value="{{this.address}}">
-</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Accept</button>
       </div>
-    </form>
+  </form>
+      </div>
+      
+    </div>
   </div>
 </div> 
 
+
+
+
  {{/each}}
 
+</table>
 
+{{!-- add --}}
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <form method="POST" action="/add" class="modal-content">
