@@ -1,140 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<table  class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Address</th>
+    <th>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Add user
+</button>
+    </th>
+  </tr>
+  </thead>
+  </table>
+   {{#each users}}
+   <table  class="table table-striped">
+  <tbody>
+     
+  <tr>
 
-    <title>Download Video Facebook, Instagram, Twitter ...</title>
+    <td>{{this.name}}</td>
+    <td>{{this.age}}</td>
+    <td>{{this.address}}</td>
+    <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate">
+  Update
+</button>
+<a href="/delete/{{this._id}}" class="btn btn-danger" >
+  Delete
+</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-    <style>
+{{!-- update --}}
+<div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <form method="POST" action="/update/{{this._id}}" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Infomation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+        <label for="name" class="form-label" >Name</label>
+        <input type="text" class="form-control" id="name" name="name" required value="{{this.name}}">
        
-    </style>
-	
-</head>
-<body>
-
-<div>
-    <nav class="container navbar navbar-expand-lg navbar-light border-bottom">
-        <a class="navbar-brand text-primary" href="/">GetVidFB.com</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Tips</a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-    <div>
-
-
-    <div class="bg-primary p-5">
-
-        <div class="container">
-            <h1 class="text-white">Download Video Facebook</h1>
-            <p class="mb-2 text-white">Welcome to Download Video Facebook</p>
-        </div>
-
-
-        <div class="container">
-            <form method="get">
-                <div class="input-group">
-                    <input name="url" type="text" class="form-control" placeholder="Enter Video Facebook URL..." aria-label="Recipient&#39;s username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-danger" type="submit">Download</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-
-
-    </div>
-
-
-    <div class="container mt-3">
-
-        <h3>Free Facebook video downloader</h3>
-
-        GetVidFB.xyz is one of the best tools available online for convert videos from Facebook to mp4 (video) or mp3
-        (audio)
-        files and download them for free - this service works for computers, tablets and mobile devices.
-
-        <br>
-        <br>
-        All you need to do is to enter the URL in the text box provided and use the button labeled "Download" to
-        download the video in the available format.
-        <br>
-        <br>
-        The usage of our website is free and does not require any software or registration.
-        <br>
-        <br>
-        Have fun and enjoy the use of our website.
-        <br>
-        <br>
-    </div>
-
-
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required value="{{this.age}}"> 
+        
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required value="{{this.address}}">
 </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Accept</button>
+      </div>
+    </form>
+  </div>
+</div> 
 
+ {{/each}}
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="POST" action="/add" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+        <label for="name" class="form-label" >Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+       
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required>
+        
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required>
 </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Accept</button>
+      </div>
+    </form>
+  </div>
+</div> 
 
-<footer class="bg-primary text-white text-center text-lg-start mt-5">
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">GetFaceVid</h5>
-                <p>GetVidFb.xyz is a best tool to download videos from Facebook.
-                </p>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Our Products</h5>
-
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#" class="text-dark">Facebook Video Downloader</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-dark">Instagram Video Downloader</a>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Social</h5>
-
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#" class="text-dark">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-dark">Youtube</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2021 Copyright:
-        <a class="text-dark" href="https://getfacevid.com/">GetFaceVid.com</a>
-        <a class="text-dark" href="#">Policy</a>
-    </div>
-
-
-</footer>
-
-
-
-
-</body></html>
