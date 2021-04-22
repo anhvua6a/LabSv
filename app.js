@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/api', usersRouter)
 
 app.get('/upload',function(req,res){
   res.render('upload')
@@ -95,9 +95,7 @@ app.post('/uploadMulti',(req,res,next)=>{
  
 })
 
-app.get('/adduser',function(req,res){
-  res.render('add')
-})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404))
