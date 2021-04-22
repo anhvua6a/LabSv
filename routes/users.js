@@ -81,7 +81,7 @@ router.get('/user/delete/:id', async function (req, res, next) {
 // update
 router.post('/user/update/:id', async (req, res) => {
   let id = req.params.id
-  await User.findOneAndUpdate({ _id: id }, {
+  await userModel.findOneAndUpdate({ _id: id }, {
     $set: {
       username: req.body.username,
       password: req.body.password,
